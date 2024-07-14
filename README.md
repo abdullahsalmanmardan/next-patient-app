@@ -40,3 +40,14 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/deploym
 npm install clsx tailwind-merge
 <!-- for css animation -->
 npm install tailwindcss-animate
+
+<!-- for chadcdn -->
+npx shadcn-ui@latest init
+
+
+<!-- to add button  -->
+npx shadcn-ui@latest add button
+
+<!-- dark mode white button show ho dark mode ma  -->
+npm install next-themes
+

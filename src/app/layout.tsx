@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Plus_Jakarta_Sans } from "next/font/google";
 import "./globals.css";
+import { ThemeProvider } from "../../src/components/theme-provider";
 
 import { cn } from "../../lib/utils";
 
@@ -24,7 +25,17 @@ export default function RootLayout({
     <html lang="en">
       {/* cn is short name for classname */}
       {/* it is used to add static and dynamic classnames. */}
-      <body className={cn('min-h-screen bg-dark-300 font-sans antialiased', inter)}>{children}</body>
+      <body className={cn('min-h-screen bg-dark-300 font-sans antialiased text-white', inter)}>
+
+      <ThemeProvider
+            attribute="class"
+            defaultTheme="system"
+            enableSystem
+            disableTransitionOnChange
+          >
+        {children}
+        </ThemeProvider>
+        </body>
     </html>
   );
 }
