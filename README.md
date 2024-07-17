@@ -50,4 +50,7 @@ npx shadcn-ui@latest add button
 
 <!-- dark mode white button show ho dark mode ma  -->
 npm install next-themes
+npx shadcn-ui@latest add form
 
+
+npm install react-phone-number-input --save
