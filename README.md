@@ -54,3 +54,5 @@ npx shadcn-ui@latest add form
 
 
 npm install react-phone-number-input --save
+
+npm install node-appwrite

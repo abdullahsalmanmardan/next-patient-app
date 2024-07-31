@@ -4,38 +4,19 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { useState } from "react";
-import {
-  Form,
-  FormControl,
-  FormDescription,
-  FormField,
-  FormItem,
-  FormLabel,
-  FormMessage,
-} from "@/components/ui/form";
+import { Form } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import CustomFormField from "../ui/CustomFormField";
 import { userFormValidation } from "../../lib/validation";
 import { useRouter } from "next/navigation";
 import SubmitButton from "../ui/SubmitButton";
 import { createUser } from "@/lib/actions/patient.actions";
+import { FormFieldType } from "./PatientForm";
 
-export enum FormFieldType {
-  INPUT = "input",
-  TEXTAREA = "textarea",
-  CHECKBOX = "checkbox",
-  PHONE_INPUT = "phoneInput",
-  DATE_PICKER = "datePicker",
-  SELECT = "select",
-  SKELETON = "skeleton",
-}
-
-const PatientForm = () => {
+const RegisterForm = ({ user }: { user: User }) => {
   const [isLoading, setIsLoading] = useState(false);
   const router = useRouter();
 
-  // idher hum ne form define kiya ha formm kis type ka ho ga,
-  // ab hum ne ye CustomFormFiled ma pass karna ha
   const form = useForm<z.infer<typeof userFormValidation>>({
     resolver: zodResolver(userFormValidation),
     defaultValues: {
@@ -50,7 +31,6 @@ const PatientForm = () => {
     email,
     phone,
   }: z.infer<typeof userFormValidation>) {
-    // console.log(name);
     setIsLoading(true);
 
     try {
@@ -78,24 +58,6 @@ const PatientForm = () => {
             iconAlt="user"
           />
 
-          <CustomFormField
-            control={form.control}
-            fieldType={FormFieldType.INPUT}
-            name="email"
-            label="Email"
-            placeholder="Enter the Email Address...."
-            iconSrc="/assets/icons/email.svg"
-            iconAlt="user"
-          />
-
-          <CustomFormField
-            control={form.control}
-            fieldType={FormFieldType.PHONE_INPUT}
-            name="phone"
-            label="Phone Number"
-            placeholder="(555) 123-4567"
-          />
-
           <SubmitButton isLoading={isLoading}>Get Started</SubmitButton>
         </form>
       </Form>
@@ -103,4 +65,4 @@ const PatientForm = () => {
   );
 };
 
-export default PatientForm;
+export default RegisterForm;
